@@ -1,1 +1,54 @@
-hello world
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Test Nhanh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+      background-color: #f0f0f0;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chào mừng đến với Website Test</h1>
+  <p>Nhập tên của bạn và bấm nút để được chào nhé!</p>
+
+  <input type="text" id="nameInput" placeholder="Nhập tên của bạn">
+  <button onclick="sayHello()">Chào</button>
+  <button onclick="changeBg()">Đổi màu nền</button>
+
+  <div id="result"></div>
+
+  <script>
+    function sayHello() {
+      const name = document.getElementById('nameInput').value.trim();
+      const result = document.getElementById('result');
+      if (name) {
+        result.innerText = `Xin chào, ${name}! 👋`;
+      } else {
+        result.innerText = `Vui lòng nhập tên!`;
+      }
+    }
+
+    function changeBg() {
+      const colors = ['#f0f0f0', '#c0e4ff', '#ffedc0', '#d0ffc0', '#fdd'];
+      document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
