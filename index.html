@@ -22,6 +22,11 @@
       font-size: 18px;
       font-weight: bold;
     }
+    #clock {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -33,6 +38,8 @@
   <button onclick="changeBg()">Đổi màu nền</button>
 
   <div id="result"></div>
+
+  <div id="clock">Đang tải thời gian...</div>
 
   <script>
     function sayHello() {
@@ -49,6 +56,22 @@
       const colors = ['#f0f0f0', '#c0e4ff', '#ffedc0', '#d0ffc0', '#fdd'];
       document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     }
+
+    function updateClock() {
+      const now = new Date();
+      const vietnamOffset = 7 * 60; // GMT+7 in minutes
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const vnTime = new Date(utc + vietnamOffset * 60000);
+
+      const hours = vnTime.getHours().toString().padStart(2, '0');
+      const minutes = vnTime.getMinutes().toString().padStart(2, '0');
+      const seconds = vnTime.getSeconds().toString().padStart(2, '0');
+
+      document.getElementById('clock').innerText = `Giờ Việt Nam: ${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Gọi lần đầu ngay khi load
   </script>
 </body>
 </html>
